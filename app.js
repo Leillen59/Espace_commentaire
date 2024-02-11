@@ -44,3 +44,20 @@ function createComment() {
 
     return comment;
 }
+
+/**
+ * @returns {HTMLHeadingElement} - Nouvel Auteur
+ */
+
+function authorCreator () {
+    const author = document.createElement("h3");
+    author.classList.add("font-medium", "text-gray-900");
+
+    const authorText = document.createTextNode(
+        `${firstName.value} ${lastName.value}`
+    );
+
+    author.appendChild(authorText);
+
+    return author;
+}
