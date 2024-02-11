@@ -13,7 +13,7 @@ function sendComment(event) {
     try {
         checkFields()
 
-        let comment = createComment();
+        const comment = createComment();
         commentList.appendChild(comment);
 
         clearFields();
@@ -22,3 +22,25 @@ function sendComment(event) {
     }
 }
 
+/**
+ * @returns {HTMLDivElement} - Nouveau commentaire
+ */
+
+function createComment() {
+    const comment = document.createElement("div");
+    comment.classList.add("flex", "space-x-4", "text-sm", "text-gray-500");
+
+    const contentComment = document.createElement("div");
+    contentComment.classList.add("flex-1", "py-10", "border-t", "border-gray-200");
+
+
+    const author = authorCreator();
+    const newMessage = messageCreation();
+
+    contentComment.appendChild(author);
+    contentComment.appendChild(newMessage);
+
+    comment.appendChild(contentComment);
+
+    return comment;
+}
