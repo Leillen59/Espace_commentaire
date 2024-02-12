@@ -14,12 +14,12 @@ function sendComment(event) {
     event.preventDefault();
     // Pas de chargement de page
     try {
-        checkFields()
+        checkForms()
 
         const comment = createComment();
         commentList.appendChild(comment);
 
-        clearFields();
+        clearForms();
     } catch (error) {
         sendErrorMessage(true);
     }
@@ -80,4 +80,22 @@ function messageCreation () {
     messageContainer.appendChild(messageContentEle);
 
     return messageContainer;
+}
+
+/**
+ * @param {boolean} state - Message d'erreur (T/F)
+ */
+
+function checkForms () {
+    if (!firstName.value) {
+        throw Error ("Pas de prénom.");
+    } else if (!lastName.value) {
+        throw Error ("Pas de nom.");
+    } else if (!message.value) {
+        throw Error ("Pas de message.")
+    }
+}
+
+function sendErrorMessage(state) {
+    errorMessage.style.display = state ? "block" : "none";
 }
