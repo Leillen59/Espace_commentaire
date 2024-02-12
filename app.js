@@ -10,6 +10,9 @@ const errorMessage = document.getElementById("error-message");
  */
 
 function sendComment(event) {
+
+    event.preventDefault();
+    // Pas de chargement de page
     try {
         checkFields()
 
@@ -60,4 +63,21 @@ function authorCreator () {
     author.appendChild(authorText);
 
     return author;
+}
+
+/**
+ * @returns {HTMLDivElement} - Nouveau message
+ */
+
+function messageCreation () {
+    const messageContainer = document.createElement("div");
+    messageContainer.classList.add ("prose", "prose-sm", "mt-4", "max-w-none", "text-gray-500");
+
+    const messageContentEle  = document.createElement("p");
+    const messageContentTxt = document.createTextNode(message.value);
+
+    messageContentEle.appendChild(messageContentTxt);
+    messageContainer.appendChild(messageContentEle);
+
+    return messageContainer;
 }
