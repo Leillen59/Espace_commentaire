@@ -1,4 +1,3 @@
-
 const commentList = document.getElementById("comment-list");
 const firstName = document.getElementById("first-name");
 const lastName = document.getElementById("last-name");
@@ -82,10 +81,6 @@ function messageCreation () {
     return messageContainer;
 }
 
-/**
- * @param {boolean} state - Message d'erreur (T/F)
- */
-
 function checkForms () {
     if (!firstName.value) {
         throw Error ("Pas de prénom.");
@@ -94,8 +89,22 @@ function checkForms () {
     } else if (!message.value) {
         throw Error ("Pas de message.")
     }
-}
+} 
+
+/**
+ * @param {boolean} state - Message d'erreur (T/F)
+ */
 
 function sendErrorMessage(state) {
     errorMessage.style.display = state ? "block" : "none";
+}
+
+//Suppression des données écrites
+
+function clearForms() {
+    firstName.value = "";
+    lastName.value = "";
+    message.value = "";
+
+    sendErrorMessage(false);
 }
